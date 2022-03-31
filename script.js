@@ -1,6 +1,12 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+var lowercaseCharacter = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+var uppercaseCharacter = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+var numericalCharacter = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+var specialCharacter = ["!","@","#","$","%","^","&","*","+","_","=","-",";"];
+var allCharacters = lowercaseCharacter.concat(uppercaseCharacter, numericalCharacter, specialCharacter)
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -14,39 +20,25 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 function generatePassword(){
-  // THEN I am presented with a series of prompts for password criteria
-    //issue prompts to user
-      //prompted for the length
-        //at least 8 characters and no more than 128 characters
-      //asked for character type
-        // confirm whether or not to include lowercase, 
-        // uppercase, 
-        // numeric, 
-        // and/or special characters
-      //Input should be validated 
-        //at least one character type should be selected
-      //a password is generated that matches the selected criteria
-        //How?
-};
+  var characterCount;
+   prompt("how many characters would you like your password to contain?");
+   if(characterCount<8 || characterCount>128 || !characterCount) {
+    alert("Password must be between 8-128 characters. Please try again");
+    };
+  var lowercaseOption;
+    confirm("would you like your password to include lowercase letters?");
+  var uppercaseOption;
+    confirm("would you like your password to include uppercase letters?");
+  var numericalOption;
+    confirm("would you like your password to include numbers?");
+  var specialOption;
+    confirm("would you like your password to include special characters (!, @, #, $, ect) ?");
+  if(lowercaseOption===false && uppercaseOption===false && numericalOption===false && specialCharacter===false) {
+    alert("No criteria specified. Please try again.");
+    };
+  };
 
 
-function issuePrompts() {
-  prompt("This is an alert."); 
-}
-
-function issuePrompts(){
-   var characterCount = prompt("how many characters would you like your password to contain?")
-   //asked for character type???
-}
-
-// function characterLengthPrompt(){
-//   //at least 8 characters and no more than 128 characters???
-// }
-// function confirmLowercase(){
-//   // confirm whether or not to include lowercase, ???
-// }
 
 
-// function valideateUserChoice(){
-//   //make sure that at least one character type should be selected
-// }
+
