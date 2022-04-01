@@ -4,7 +4,7 @@ var generateBtn = document.querySelector("#generate");
 var lowercaseCharacters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 var uppercaseCharacters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 var numericalCharacters = [ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-var specialCharacters = ["!","@","#","$","%","^","&","*","+","_","=","-",";"];
+var specialCharacters = ["!","@","#","$","%","^","&","*","+", "?", "<", ">"];
 
 // Write password to the #password input
 function writePassword() {
@@ -30,24 +30,22 @@ function generatePassword() {
   var specialOption = confirm("would you like your password to include special characters (!, @, #, $, ect) ?");
   if(lowercaseOption===false && uppercaseOption===false && numericalOption===false && specialOption===false) {
     alert("No criteria specified. Please try again.");
-    };
+    return
+    }
+    
 var store = {
   lowercaseOption: lowercaseOption,
-  
-
+  uppercaseOption: uppercaseOption,
+  numericalOption: numericalOption,
+  specialOption: specialOption,
+}
+return store;
 }
 
-return store;
-
-  
-
-  
-
-};
-
 function random () {
-  var index = Math.floor(Math.random()*characterCount.length);
-  var randomize = allCharacters[index];
+  var choices = generatePassword()
+  var index = Math.floor(Math.random()*choices.store);
+  var randomize = choices.store[index];
   return randomize;
 }
 
@@ -57,24 +55,24 @@ var final = [];
 var possibleSet = [];
 var confirmedSet = [];
 
-if(choices.lowercaseOption) {
+if(choices.lowercaseOption===true) {
   possibleSet = possibleSet.concat(lowercaseCharacters);
   confirmedSet.push(random(lowercaseCharacters));
 }
 
-if(choices.uppercaseOption) {
+if(choices.uppercaseOption===true) {
   possibleSet = possibleSet.concat(uppercaseCharacters);
   confirmedSet.push(random(uppercaseCharacters));
 }
 
-if(choices.uppercaseOption) {
-  possibleSet = possibleSet.concat(uppercaseCharacters);
-  confirmedSet.push(random(uppercaseCharacters));
+if(choices.numericalOption===true) {
+  possibleSet = possibleSet.concat(numericalOption);
+  confirmedSet.push(random(numericalOption));
 }
 
-if(choices.uppercaseOption) {
-  possibleSet = possibleSet.concat(uppercaseCharacters);
-  confirmedSet.push(random(uppercaseCharacters));
+if(choices.uppercaseOption===true) {
+  possibleSet = possibleSet.concat(specialOption);
+  confirmedSet.push(random(specialOption));
 }
 
 for(var i=0; i<choices.characterCount; i++) {
@@ -86,6 +84,4 @@ for ( var i = 0; i < confirmedSet.characterCount; i++) {
   final[i] = confirmedSet[i]
 }
 return final.join('');
-
-
 }
