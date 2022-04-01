@@ -5,10 +5,11 @@ var lowercaseCharacters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","
 var uppercaseCharacters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 var numericalCharacters = [ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var specialCharacters = ["!","@","#","$","%","^","&","*","+", "?", "<", ">"];
+var allCharacters = lowercaseCharacters.concat(uppercaseCharacters, numericalCharacters, specialCharacters);
 
 // Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
+function writePassword(final) {
+  var password = buildaPassword()
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
@@ -34,18 +35,17 @@ function generatePassword() {
     }
     
 var store = {
-  lowercaseOption: lowercaseOption,
-  uppercaseOption: uppercaseOption,
-  numericalOption: numericalOption,
-  specialOption: specialOption,
+  lowercaseOption,
+  uppercaseOption,
+  numericalOption,
+  specialOption
 }
 return store;
 }
 
 function random () {
-  var choices = generatePassword()
-  var index = Math.floor(Math.random()*choices.store);
-  var randomize = choices.store[index];
+  var index = Math.floor(Math.random()*store.length);
+  var randomize = store[index];
   return randomize;
 }
 
@@ -70,7 +70,7 @@ if(choices.numericalOption===true) {
   confirmedSet.push(random(numericalOption));
 }
 
-if(choices.uppercaseOption===true) {
+if(choices.specialOption===true) {
   possibleSet = possibleSet.concat(specialOption);
   confirmedSet.push(random(specialOption));
 }
@@ -80,7 +80,7 @@ for(var i=0; i<choices.characterCount; i++) {
  final.push(possibleSet)
 }
 
-for ( var i = 0; i < confirmedSet.characterCount; i++) {
+for ( var i = 0; i < confirmedSet.choices.characterCount; i++) {
   final[i] = confirmedSet[i]
 }
 return final.join('');
