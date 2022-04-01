@@ -7,7 +7,7 @@ Random password generator for all your secure password needs. This page will ran
 ## Visuals
 ![alt_text](webpageSC.png)
 
-![alt_text](webpagerecording)
+![alt_text](webpagerecording.gif)
 
 ## Usage 
 
@@ -27,5 +27,7 @@ Simply click the button labelled "Generate Password". You will be asked to enter
 ## Author
 
 Mateo Navarro
+
 LinkedIn: https://www.linkedin.com/in/mateonav
+
 GitHub: https://github.com/mateonav98
