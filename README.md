@@ -18,7 +18,7 @@ Simply click the button labelled "Generate Password". You will be asked to enter
 1. https://github.com/mateonav98/random-password-generation
 2. https://mateonav98.github.io/random-password-generation/
 
-# Code
+## Code
 
 1. HTML
 2. CSS
