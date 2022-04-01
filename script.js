@@ -5,7 +5,6 @@ var lowercaseCharacters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","
 var uppercaseCharacters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 var numericalCharacters = [ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var specialCharacters = ["!","@","#","$","%","^","&","*","+", "?", "<", ">"];
-var allCharacters = lowercaseCharacters.concat(uppercaseCharacters, numericalCharacters, specialCharacters);
 
 // Write password to the #password input
 function writePassword(final) {
@@ -35,6 +34,7 @@ function generatePassword() {
     }
     
 var store = {
+  characterCount,
   lowercaseOption,
   uppercaseOption,
   numericalOption,
@@ -43,7 +43,7 @@ var store = {
 return store;
 }
 
-function random () {
+function random (store) {
   var index = Math.floor(Math.random()*store.length);
   var randomize = store[index];
   return randomize;
@@ -53,35 +53,31 @@ function buildaPassword() {
 var choices = generatePassword();
 var final = [];
 var possibleSet = [];
-var confirmedSet = [];
 
 if(choices.lowercaseOption===true) {
   possibleSet = possibleSet.concat(lowercaseCharacters);
-  confirmedSet.push(random(lowercaseCharacters));
+random(lowercaseCharacters);
 }
 
 if(choices.uppercaseOption===true) {
   possibleSet = possibleSet.concat(uppercaseCharacters);
-  confirmedSet.push(random(uppercaseCharacters));
+random(uppercaseCharacters);
 }
 
 if(choices.numericalOption===true) {
-  possibleSet = possibleSet.concat(numericalOption);
-  confirmedSet.push(random(numericalOption));
+  possibleSet = possibleSet.concat(numericalCharacters);
+random(numericalCharacters);
 }
 
 if(choices.specialOption===true) {
-  possibleSet = possibleSet.concat(specialOption);
-  confirmedSet.push(random(specialOption));
+  possibleSet = possibleSet.concat(specialCharacters);
+random(specialCharacters);
 }
 
 for(var i=0; i<choices.characterCount; i++) {
- var possibleSet = random(possibleSet);
- final.push(possibleSet)
+  var x = random(possibleSet);
+  final.push(x)
 }
 
-for ( var i = 0; i < confirmedSet.choices.characterCount; i++) {
-  final[i] = confirmedSet[i]
-}
 return final.join('');
 }
